@@ -2,7 +2,7 @@ import React from "react";
 
 import CollectionPreview from "../../components/CollectionPreview/CollectionPreview";
 
-import { SHOP_DATA } from "../../shopData";
+import SHOP_DATA from "../../shopData";
 
 export default class Shop extends React.Component {
   state = {

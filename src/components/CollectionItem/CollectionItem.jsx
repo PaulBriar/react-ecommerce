@@ -26,4 +26,8 @@ const mapDispatchToProps = dispatch => ({
   addItem: cartItem => dispatch(addCartItem(cartItem))
 });
 
+// const mapStateToProps = state => ({
+//   cartItem: state.cartItem.find(item => item)
+// })
+
 export default connect(null, mapDispatchToProps)(CollectionItem);
