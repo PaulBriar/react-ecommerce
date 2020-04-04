@@ -13,7 +13,7 @@ const CollectionItem = ({ item, addItem }) => {
       <div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />
       <div className="collection-footer">
         <span className="name">{name}</span>
-        <span className="price">{price}</span>
+        <span className="price">${price}</span>
       </div>
       <Button onClick={() => addItem(item)} inverted>
         ADD TO CART
@@ -25,9 +25,5 @@ const CollectionItem = ({ item, addItem }) => {
 const mapDispatchToProps = dispatch => ({
   addItem: cartItem => dispatch(addCartItem(cartItem))
 });
-
-// const mapStateToProps = state => ({
-//   cartItem: state.cartItem.find(item => item)
-// })
 
 export default connect(null, mapDispatchToProps)(CollectionItem);
