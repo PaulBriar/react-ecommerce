@@ -6,17 +6,18 @@ import { createStore } from "redux";
 
 import rootReducer from "../../redux/reducers";
 
-import HomePage from "./HomePage";
+import Categories from "./Categories";
 
 const store = createStore(rootReducer);
 
-test("Rendering the HomePage", () => {
+test("renders the directory", () => {
   const { container } = render(
     <Provider store={store}>
       <BrowserRouter>
-        <HomePage />
+        <Categories />
       </BrowserRouter>
     </Provider>
   );
   expect(container).toBeInTheDocument();
+  expect(container.firstChild).toBeInTheDocument('<h1 class="title">HATS</h1>');
 });
