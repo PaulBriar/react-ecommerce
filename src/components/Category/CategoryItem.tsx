@@ -1,9 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-import "./MenuItem.styles.scss";
+import { CategoryItemProps } from '../../utils/interfaces';
 
-const MenuItem = ({ title, imageUrl, size, history, match, linkUrl }) => {
+import "./CategoryItem.styles.scss";
+
+const CategoryItem: any = ({ title, imageUrl, size, history, match, linkUrl }: CategoryItemProps) => {
   return (
     <div
       className={`${size} menu-item`}
@@ -21,4 +23,4 @@ const MenuItem = ({ title, imageUrl, size, history, match, linkUrl }) => {
   );
 };
 
-export default withRouter(MenuItem);
+export default withRouter(CategoryItem);

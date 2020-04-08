@@ -3,21 +3,11 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { selectCartItems, selectCartTotal } from '../../redux/selectors/cartSelector';
+import { CheckoutProps } from '../../utils/interfaces';
 
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
 
 import './Checkout.styles.scss';
-
-interface CheckoutProps {
-  cartItems: {
-    id: string,
-    imageUrl: string,
-    price: number,
-    name: string,
-    quantity: number
-  }[];
-  total: number;
-}
 
 const Checkout = ({ cartItems, total }: CheckoutProps) => {
   return (

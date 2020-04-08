@@ -1,13 +1,13 @@
 import React from "react";
 import { render } from "@testing-library/react";
-import { BrowserRouter, Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
-import Directory from "./Directory";
+import Categories from "./Categories";
 
 test("renders the directory", () => {
   const { container } = render(
     <BrowserRouter>
-      <Directory />
+      <Categories />
     </BrowserRouter>
   );
   expect(container).toBeInTheDocument();

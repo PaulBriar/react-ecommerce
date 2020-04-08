@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, TOGGLE_CART_HIDDEN, ADD_CART_ITEM, REMOVE_CART_ITEM, REDUCE_ITEM_QUANTITY } from '../redux/constants';
+import { SET_CURRENT_USER, TOGGLE_CART_HIDDEN, ADD_CART_ITEM, REMOVE_CART_ITEM, REDUCE_ITEM_QUANTITY, DEFAULT_CATEGORY_STATE } from '../redux/constants';
 
 interface SetCurrentUserAction {
   type: typeof SET_CURRENT_USER,
@@ -24,6 +24,12 @@ interface ReduceItemQuantityAction {
   cartItem: CartItemTypes
 }
 
+interface DefaultCategoryAction {
+  type: typeof DEFAULT_CATEGORY_STATE
+}
+
+export type CategoryActionTypes = DefaultCategoryAction;
+
 export type CartActionTypes = ToggleCartHiddenAction | AddCartItemAction | RemoveCartItemAction | ReduceItemQuantityAction;
 
 export type UserActionTypes = SetCurrentUserAction;
@@ -35,6 +41,16 @@ export interface CartState {
 
 export interface UserState {
   currentUser: null | object
+}
+
+export interface CategoryState {
+  categoryItems: {
+    title: string
+    imageUrl: string,
+    id: number,
+    size?: string,
+    linkUrl: string
+  }[]
 }
 
 export interface CartItemTypes {
@@ -52,4 +68,54 @@ export interface UserTypes {
 export interface StateTypes {
   user: UserState,
   cart: CartState
+}
+
+export interface CheckoutProps {
+  cartItems: {
+    id: string,
+    imageUrl: string,
+    price: number,
+    name: string,
+    quantity: number
+  }[];
+  total: number;
+}
+
+export interface CategoryProps {
+  categories: {
+    categoryItems: [
+      {
+        title: string
+        imageUrl: string,
+        id: number,
+        size?: string,
+        linkUrl: string
+      }
+    ]
+  }
+}
+
+export interface CategoryStateProps {
+  categoryItems: [
+    {
+      title: string
+      imageUrl: string,
+      id: number,
+      size?: string,
+      linkUrl: string
+    }
+  ]
+}
+
+export interface CategoryItemProps {
+  title: string;
+  imageUrl: string;
+  size?: string;
+  history: {
+    push(match: string): any
+  };
+  match: {
+    url: string
+  }
+  linkUrl: string;
 }
