@@ -1,4 +1,5 @@
 import React from "react";
+import ErrorBoundary from "react-error-boundary";
 
 import CollectionPreview from "../../components/CollectionPreview/CollectionPreview";
 
@@ -13,7 +14,9 @@ export default class Shop extends React.Component {
     return (
       <div className="shop-page">
         {collections.map(({ id, ...otherCollectionProps }) => (
-          <CollectionPreview key={id} {...otherCollectionProps} />
+          <ErrorBoundary key={id}>
+            <CollectionPreview key={id} {...otherCollectionProps} />
+          </ErrorBoundary>
         ))}
       </div>
     );

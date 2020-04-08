@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import ErrorBoundary from 'react-error-boundary';
 
 import { selectCartItems, selectCartTotal } from '../../redux/selectors/cartSelector';
 import { CheckoutProps } from '../../utils/interfaces';
@@ -29,11 +30,13 @@ const Checkout = ({ cartItems, total }: CheckoutProps) => {
           <span>Remove</span>
         </div>
       </div>
-      {
-        cartItems?.map(cartItem => (
-          <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-        ))
-      }
+      <ErrorBoundary>
+        {
+          cartItems?.map(cartItem => (
+            <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+          ))
+        }
+      </ErrorBoundary>
       <div className="total">
         <span>Total: ${total}</span>
       </div>

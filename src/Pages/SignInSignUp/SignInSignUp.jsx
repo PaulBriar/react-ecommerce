@@ -1,4 +1,5 @@
 import React from "react";
+import ErrorBoundary from "react-error-boundary";
 
 import SignIn from "../../components/SignIn/SignIn";
 import SignUp from "../../components/SignUp/SignUp";
@@ -8,8 +9,12 @@ import "./SignInSignUp.styles.scss";
 const SignInSignUp = () => {
   return (
     <div className="sign-in-sign-up">
-      <SignIn />
-      <SignUp />
+      <ErrorBoundary>
+        <SignIn />
+      </ErrorBoundary>
+      <ErrorBoundary>
+        <SignUp />
+      </ErrorBoundary>
     </div>
   );
 };
