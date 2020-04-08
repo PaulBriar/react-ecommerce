@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { Dispatch } from 'redux';
 import { setCurrentUser } from "./redux/actions/userActions";
 import { createStructuredSelector } from "reselect";
+import ErrorBoundary from 'react-error-boundary';
 
 import HomePage from "./Pages/HomePage/HomePage";
 import Shop from "./Pages/Shop/Shop";
@@ -52,7 +53,9 @@ class App extends React.Component<currenUserProps> {
   render() {
     return (
       <div className="App">
-        <Header />
+        <ErrorBoundary>
+          <Header />
+        </ErrorBoundary>
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={Shop} />

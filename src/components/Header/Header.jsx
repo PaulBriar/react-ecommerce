@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { auth } from "../../firebase/firebase";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import ErrorBoundary from "react-error-boundary";
 
 import Cart from "../Cart/Cart";
 import CartDropdown from "../CartDropdown/CartDropdown";
@@ -36,7 +37,11 @@ const Header = ({ currentUser, cartHidden }) => {
         )}
         <Cart />
       </div>
-      {cartHidden ? null : <CartDropdown />}
+      {cartHidden ? null : (
+        <ErrorBoundary>
+          <CartDropdown />
+        </ErrorBoundary>
+      )}
     </div>
   );
 };
