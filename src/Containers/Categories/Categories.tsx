@@ -1,8 +1,10 @@
 import React from "react";
 import CategoryItem from "../../components/Category/CategoryItem";
 import { connect } from "react-redux";
+import { createStructuredSelector } from 'reselect';
 
-import { CategoryProps, CategoryStateProps } from '../../utils/interfaces';
+import { CategoryStateProps } from '../../utils/interfaces';
+import { selectCategoryItems } from '../../redux/selectors/categorySelector';
 
 import "./Categories.styles.scss";
 
@@ -17,8 +19,8 @@ const Categories = ({ categoryItems }: CategoryStateProps) => {
   );
 };
 
-const mapStateToProps = ({ categories: { categoryItems } }: CategoryProps) => ({
-  categoryItems
+const mapStateToProps = createStructuredSelector({
+  categoryItems: selectCategoryItems
 });
 
 export default connect(mapStateToProps)(Categories);
