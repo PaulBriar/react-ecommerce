@@ -1,20 +1,19 @@
 import { addItemToCart, removeItemFromQuantity } from "../../utils/cartUtils";
+import { CartState, CartActionTypes } from '../../utils/interfaces';
 
 import {
   TOGGLE_CART_HIDDEN,
   ADD_CART_ITEM,
   REMOVE_CART_ITEM,
   REDUCE_ITEM_QUANTITY,
-  InitialCartState,
-  CartActionTypes
 } from "../constants";
 
-const INITIAL_STATE: InitialCartState = {
+const INITIAL_STATE: CartState = {
   cartHidden: true,
   cartItems: []
 };
 
-export const cartReducer = (state = INITIAL_STATE, action: CartActionTypes): InitialCartState => {
+export const cartReducer = (state = INITIAL_STATE, action: CartActionTypes): CartState => {
   switch (action.type) {
     case TOGGLE_CART_HIDDEN:
       return {

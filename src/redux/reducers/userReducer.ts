@@ -1,10 +1,11 @@
-import { SET_CURRENT_USER, InitialUserState, UserActionTypes } from "../constants";
+import { SET_CURRENT_USER } from "../constants";
+import { UserState, UserActionTypes } from '../../utils/interfaces';
 
-const INITIAL_STATE: InitialUserState = {
+const INITIAL_STATE: UserState = {
   currentUser: null
 };
 
-export const userReducer = (state = INITIAL_STATE, action: UserActionTypes): InitialUserState => {
+export const userReducer = (state = INITIAL_STATE, action: UserActionTypes): UserState => {
   switch (action.type) {
     case SET_CURRENT_USER:
       return {

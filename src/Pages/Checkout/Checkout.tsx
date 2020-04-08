@@ -12,9 +12,9 @@ interface CheckoutProps {
   cartItems: {
     id: string,
     imageUrl: string,
-    price: string,
+    price: number,
     name: string,
-    quantity: string
+    quantity: number
   }[];
   total: number;
 }

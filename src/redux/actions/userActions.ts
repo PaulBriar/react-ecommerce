@@ -1,4 +1,5 @@
-import { SET_CURRENT_USER, UserActionTypes } from "../constants";
+import { SET_CURRENT_USER } from "../constants";
+import { UserActionTypes } from '../../utils/interfaces';
 
 interface User {
   currentUser: object

@@ -2,10 +2,10 @@ import {
   TOGGLE_CART_HIDDEN,
   ADD_CART_ITEM,
   REMOVE_CART_ITEM,
-  REDUCE_ITEM_QUANTITY,
-  CartActionTypes,
-  CartItemTypes
+  REDUCE_ITEM_QUANTITY
 } from "../constants";
+
+import { CartActionTypes, CartItemTypes } from '../../utils/interfaces';
 
 export const toggleCartHidden = (): CartActionTypes => ({
   type: TOGGLE_CART_HIDDEN

@@ -16,9 +16,9 @@ interface CartDropdownProps {
   cartItems: {
     id: string,
     imageUrl: string,
-    price: string,
+    price: number,
     name: string,
-    quantity: string
+    quantity: number
   }[];
   history: {
     push: any

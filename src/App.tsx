@@ -12,7 +12,7 @@ import SignInSignUp from "./Pages/SignInSignUp/SignInSignUp";
 import Checkout from "./Pages/Checkout/Checkout";
 
 import { selectCurrentUser } from "./redux/selectors/userSelector";
-import { UserTypes } from './redux/constants';
+import { UserTypes } from './utils/interfaces';
 
 import Header from "./components/Header/Header";
 
