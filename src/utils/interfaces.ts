@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER, TOGGLE_CART_HIDDEN, ADD_CART_ITEM, REMOVE_CART_ITEM, REDUCE_ITEM_QUANTITY, DEFAULT_CATEGORY_STATE } from '../redux/constants';
+import { SET_CURRENT_USER, TOGGLE_CART_HIDDEN, ADD_CART_ITEM, REMOVE_CART_ITEM, REDUCE_ITEM_QUANTITY, DEFAULT_CATEGORY_STATE, DEFAULT_SHOP_STATE } from '../redux/constants';
 
 interface SetCurrentUserAction {
   type: typeof SET_CURRENT_USER,
@@ -27,6 +27,12 @@ interface ReduceItemQuantityAction {
 interface DefaultCategoryAction {
   type: typeof DEFAULT_CATEGORY_STATE
 }
+
+interface DefaultShopAction {
+  type: typeof DEFAULT_SHOP_STATE
+}
+
+export type ShopActionTypes = DefaultShopAction;
 
 export type CategoryActionTypes = DefaultCategoryAction;
 
@@ -118,4 +124,22 @@ export interface CategoryItemProps {
     url: string
   }
   linkUrl: string;
+}
+
+export interface ShopProps {
+  collections: [
+    {
+      id: number,
+      title: string,
+      routeName: string,
+      items: [
+        {
+          id: number,
+          name: string,
+          imageUrl: string,
+          price: number
+        }
+      ]
+    }
+  ]
 }
