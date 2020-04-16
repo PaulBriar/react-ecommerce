@@ -4,14 +4,14 @@ import { addCartItem } from "../../redux/actions/cartActions";
 
 import Button from "../Button/Button";
 
-import "./CollectionItem.styles.scss";
+import "./CategoryItem.styles.scss";
 
-const CollectionItem = ({ item, addItem }) => {
+const CategoryItem = ({ item, addItem }) => {
   const { imageUrl, name, price } = item;
   return (
-    <div className="collection-item">
+    <div className="category-item">
       <div className="image" style={{ backgroundImage: `url(${imageUrl})` }} />
-      <div className="collection-footer">
+      <div className="category-footer">
         <span className="name">{name}</span>
         <span className="price">${price}</span>
       </div>
@@ -26,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
   addItem: cartItem => dispatch(addCartItem(cartItem))
 });
 
-export default connect(null, mapDispatchToProps)(CollectionItem);
+export default connect(null, mapDispatchToProps)(CategoryItem);

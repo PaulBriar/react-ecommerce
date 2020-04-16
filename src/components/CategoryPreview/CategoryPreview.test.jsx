@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "../../redux/reducers";
 
-import CollectionPreview from "./CollectionPreview";
+import CategoryPreview from "./CategoryPreview";
 
 const store = createStore(rootReducer);
 
@@ -26,7 +26,7 @@ const items = [
 test("Render Preview Collection", () => {
   const { container } = render(
     <Provider store={store}>
-      <CollectionPreview title="hats" items={items} />
+      <CategoryPreview title="hats" items={items} />
     </Provider>
   );
   expect(container).toBeInTheDocument();

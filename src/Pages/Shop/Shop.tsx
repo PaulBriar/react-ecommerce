@@ -3,19 +3,18 @@ import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import ErrorBoundary from "react-error-boundary";
 
-import { selectCollections } from "../../redux/selectors/shopSelector";
+import { selectCategories } from "../../redux/selectors/shopSelector";
 import { ShopProps } from '../../utils/interfaces';
 
-import CollectionPreview from "../../components/CollectionPreview/CollectionPreview";
+import CategoryPreview from "../../components/CategoryPreview/CategoryPreview";
 
-const Shop = ({ collections }: ShopProps) => {
-  console.log(collections);
+const Shop = ({ categories }: ShopProps) => {
   return (
     <div className="shop-page">
-      {collections &&
-        collections.map(({ id, ...otherCollectionProps }) => (
+      {categories &&
+        categories.map(({ id, ...otherCategoryProps }) => (
           <ErrorBoundary key={id}>
-            <CollectionPreview key={id} {...otherCollectionProps} />
+            <CategoryPreview key={id} {...otherCategoryProps} />
           </ErrorBoundary>
         ))}
     </div>
@@ -23,7 +22,7 @@ const Shop = ({ collections }: ShopProps) => {
 };
 
 const mapStateToProps = createStructuredSelector({
-  collections: selectCollections
+  categories: selectCategories
 });
 
 export default connect(mapStateToProps)(Shop);

@@ -126,8 +126,40 @@ export interface CategoryItemProps {
   linkUrl: string;
 }
 
+export interface MenuItemProps {
+  title: string;
+  imageUrl: string;
+  size?: string;
+  history: {
+    push(match: string): any
+  };
+  match: {
+    url: string
+  }
+  linkUrl: string;
+}
+
+//TODO - Figure out how to create seperate type for categories to stay DRY
 export interface ShopProps {
-  collections: [
+  categories: [
+    {
+      id: number,
+      title: string,
+      routeName: string,
+      items: [
+        {
+          id: number,
+          name: string,
+          imageUrl: string,
+          price: number
+        }
+      ]
+    }
+  ]
+}
+
+export interface CategoryOverviewProps {
+  categories: [
     {
       id: number,
       title: string,

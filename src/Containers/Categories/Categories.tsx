@@ -1,7 +1,8 @@
 import React from "react";
-import CategoryItem from "../../components/Category/CategoryItem";
 import { connect } from "react-redux";
 import { createStructuredSelector } from 'reselect';
+
+import MenuItem from "../../components/Menu/MenuItem";
 
 import { CategoryStateProps } from '../../utils/interfaces';
 import { selectCategoryItems } from '../../redux/selectors/categorySelector';
@@ -13,7 +14,7 @@ const Categories = ({ categoryItems }: CategoryStateProps) => {
     <div className="category-menu">
       {categoryItems &&
         categoryItems.map(({ id, ...rest }) => (
-          <CategoryItem key={id} {...rest} />
+          <MenuItem key={id} {...rest} />
         ))}
     </div>
   );
