@@ -44,6 +44,19 @@ export interface CartState {
   cartHidden: boolean,
   cartItems: CartItemTypes[]
 }
+export interface CartDropdownProps {
+  cartItems: {
+    id: string,
+    imageUrl: string,
+    price: number,
+    name: string,
+    quantity: number
+  }[];
+  history: {
+    push: any
+  };
+  toggleCartHidden(): any
+}
 
 export interface UserState {
   currentUser: null | object
@@ -87,6 +100,13 @@ export interface CheckoutProps {
   total: number;
 }
 
+export interface CheckoutItemProps {
+  cartItem?: CartItemTypes;
+  removeItem(cartItem: CartItemTypes): object;
+  addItem(cartItem: CartItemTypes): object;
+  reduceItem(cartItem: CartItemTypes): object;
+}
+
 export interface CategoryProps {
   categories: {
     categoryItems: [
@@ -112,6 +132,16 @@ export interface CategoryStateProps {
     }
   ]
 }
+export interface CategoryPreviewProps {
+  title: string,
+  items: {
+    title: string,
+    imageUrl: string,
+    id: number,
+    size?: string,
+    linkUrl: string
+  }[]
+}
 
 export interface CategoryItemProps {
   title: string;
@@ -124,6 +154,16 @@ export interface CategoryItemProps {
     url: string
   }
   linkUrl: string;
+}
+
+export interface CategoryPageItem {
+  item: {
+    title: string,
+    imageUrl: string,
+    id: number,
+    size ?: string,
+    linkUrl: string
+  }
 }
 
 export interface MenuItemProps {
@@ -141,37 +181,40 @@ export interface MenuItemProps {
 
 //TODO - Figure out how to create seperate type for categories to stay DRY
 export interface ShopProps {
-  categories: [
-    {
-      id: number,
-      title: string,
-      routeName: string,
-      items: [
-        {
-          id: number,
-          name: string,
-          imageUrl: string,
-          price: number
-        }
-      ]
-    }
-  ]
+  match: {
+    isExact: boolean,
+    params: object,
+    path: string,
+    url: string
+  }
 }
 
 export interface CategoryOverviewProps {
   categories: [
-    {
+     {
       id: number,
       title: string,
       routeName: string,
-      items: [
-        {
-          id: number,
-          name: string,
-          imageUrl: string,
-          price: number
-        }
-      ]
+      items: {
+        id: number,
+        name: string,
+        imageUrl: string,
+        price: number
+      }
     }
   ]
+}
+
+export interface CategoryPageProps {
+  category: {
+    id: number,
+    title: string,
+    routeName: string,
+    items: {
+      id: number,
+      name: string,
+      imageUrl: string,
+      price: number
+    }[]
+  }
 }

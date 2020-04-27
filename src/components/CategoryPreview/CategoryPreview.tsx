@@ -2,9 +2,11 @@ import React from "react";
 
 import CategoryItem from "../CategoryItem/CategoryItem";
 
+import { CategoryPreviewProps } from '../../utils/interfaces';
+
 import "./CategoryPreview.styles.scss";
 
-const CategoryPreview = ({ title, items }) => {
+const CategoryPreview = ({ title, items }: CategoryPreviewProps) => {
 
     return (
       <div className="category-preview">

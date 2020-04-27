@@ -8,9 +8,9 @@ import { CheckoutProps } from '../../utils/interfaces';
 
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
 
-import './Checkout.styles.scss';
+import './CheckoutPage.styles.scss';
 
-const Checkout = ({ cartItems, total }: CheckoutProps) => {
+const CheckoutPage = ({ cartItems, total }: CheckoutProps) => {
   return (
     <div className="checkout-page">
       <div className="checkout-header">
@@ -51,4 +51,4 @@ const mapStateToProps = createStructuredSelector({
   total: selectCartTotal
 });
 
-export default connect(mapStateToProps, null)(Checkout);
+export default connect(mapStateToProps, null)(CheckoutPage);

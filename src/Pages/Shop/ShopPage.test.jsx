@@ -4,14 +4,14 @@ import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 import rootReducer from "../../redux/reducers";
-import Shop from "./Shop";
+import ShopPage from "./ShopPage";
 
 const store = createStore(rootReducer);
 
 test("Render the Shop page", () => {
   const { container } = render(
     <Provider store={store}>
-      <Shop />
+      <ShopPage />
     </Provider>
   );
   expect(container).toBeInTheDocument();

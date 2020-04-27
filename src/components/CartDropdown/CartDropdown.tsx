@@ -6,25 +6,12 @@ import { withRouter } from 'react-router-dom';
 
 import { selectCartItems } from "../../redux/selectors/cartSelector";
 import { toggleCartHidden } from "../../redux/actions/cartActions";
+import { CartDropdownProps } from '../../utils/interfaces';
 
 import Button from "../Button/Button";
 import CartItem from "../CartItem/CartItem";
 
 import "./CartDropdown.styles.scss";
-
-interface CartDropdownProps {
-  cartItems: {
-    id: string,
-    imageUrl: string,
-    price: number,
-    name: string,
-    quantity: number
-  }[];
-  history: {
-    push: any
-  };
-  toggleCartHidden(): any
-}
 
 const CartDropdown = ({ cartItems, history, toggleCartHidden }: CartDropdownProps) => {
 

@@ -1,21 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { useToasts } from 'react-toast-notifications';
 
 import { removeCartItem, reduceCartItemQuantity, addCartItem } from '../../redux/actions/cartActions';
-import { CartItemTypes } from '../../utils/interfaces';
+import { CartItemTypes, CheckoutItemProps } from '../../utils/interfaces';
 
 import './CheckoutItem.styles.scss';
 
-interface CheckoutItemProps {
-  cartItem?: CartItemTypes;
-  removeItem(cartItem: CartItemTypes): object;
-  addItem(cartItem: CartItemTypes): object;
-  reduceItem(cartItem: CartItemTypes): object;
-}
+
 
 const CheckoutItem = ({ cartItem, removeItem, addItem, reduceItem }: CheckoutItemProps) => {
-  const { name, imageUrl, price, quantity } = cartItem;
+  const { name, imageUrl, price, quantity } = cartItem
+
+  const { addToast } = useToasts()
+
+  const handleRemoveItem = (cartItem: CartItemTypes) => {
+    removeItem(cartItem)
+    addToast(`${cartItem.name} Has Been Removed`, { appearance: 'error', autoDismiss: true})
+  }
   return (
     <div className="checkout-item">
       <div className="image-container">
@@ -28,7 +31,7 @@ const CheckoutItem = ({ cartItem, removeItem, addItem, reduceItem }: CheckoutIte
         <div className="arrow" onClick={() => addItem(cartItem)}>&#10095;</div>
       </span>
       <span className="price">${price}</span>
-      <div className="remove-button" onClick={() => removeItem(cartItem)}>&#10005;</div>
+      <div className="remove-button" onClick={() => handleRemoveItem(cartItem)}>&#10005;</div>
     </div>
   )
 };

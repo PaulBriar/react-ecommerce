@@ -6,11 +6,12 @@ import { Dispatch } from 'redux';
 import { setCurrentUser } from "./redux/actions/userActions";
 import { createStructuredSelector } from "reselect";
 import ErrorBoundary from 'react-error-boundary';
+import { ToastProvider } from 'react-toast-notifications';
 
 import HomePage from "./Pages/HomePage/HomePage";
-import Shop from "./Pages/Shop/Shop";
+import ShopPage from "./Pages/Shop/ShopPage";
 import SignInSignUp from "./Pages/SignInSignUp/SignInSignUp";
-import Checkout from "./Pages/Checkout/Checkout";
+import CheckoutPage from "./Pages/Checkout/CheckoutPage";
 
 import { selectCurrentUser } from "./redux/selectors/userSelector";
 import { UserTypes } from './utils/interfaces';
@@ -52,23 +53,25 @@ class App extends React.Component<currenUserProps> {
 
   render() {
     return (
+      <ToastProvider placement="bottom-center" autoDismissTimeout={3000}>
       <div className="App">
-        <ErrorBoundary>
           <Header />
-        </ErrorBoundary>
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/shop" component={Shop} />
-          <Route exact path="/checkout" component={Checkout} />
-          <Route
-            exact
-            path="/signin"
-            render={() =>
-              this.props.currentUser ? <Redirect to="/" /> : <SignInSignUp />
-            }
-          />
-        </Switch>
-      </div>
+          <ErrorBoundary>
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/shop" component={ShopPage} />
+              <Route exact path="/checkout" component={CheckoutPage} />
+              <Route
+                exact
+                path="/signin"
+                render={() =>
+                  this.props.currentUser ? <Redirect to="/" /> : <SignInSignUp />
+                }
+              />
+            </Switch>
+          </ErrorBoundary>
+        </div>
+      </ToastProvider>
     );
   }
 }

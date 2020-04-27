@@ -2,26 +2,31 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import ErrorBoundary from 'react-error-boundary';
+import PropTypes from 'prop-types';
 
 import CategoryPreview from '../CategoryPreview/CategoryPreview'
-import { CategoryOverviewProps } from '../../utils/interfaces';
 
-const CategoryOverview = ({ categories }: CategoryOverviewProps) => {
-  
+import { selectCategoriesForPreview } from '../../redux/selectors/shopSelector';
+
+const CategoryOverview = ({ categories }) => {
   return (
     <div className="category-overview">
+      <ErrorBoundary>
       {categories &&
         categories.map(({ id, ...otherCategoryProps }) => (
-          <ErrorBoundary key={id}>
             <CategoryPreview key={id} {...otherCategoryProps} />
-          </ErrorBoundary>
         ))}
+      </ErrorBoundary>
     </div>
   )
 }
 
 const mapStateToProps = createStructuredSelector({
-
+  categories: selectCategoriesForPreview
 })
 
-export default connect(mapStateToProps, null)(CategoryOverview);
+CategoryOverview.propTypes = {
+  categories: PropTypes.array.isRequired
+};
+
+export default connect(mapStateToProps)(CategoryOverview);
