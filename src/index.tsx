@@ -16,10 +16,17 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
+//LogRocket Error Checking Setup
 LogRocket.init('phkamo/react-ecommerce-demo-dev');
 setupLogRocketReact(LogRocket);
 
-const createStoreWithMiddleware = applyMiddleware(logger, LogRocket.reduxMiddleware())(createStore);
+const middleware = [];
+//Include Redux logger only in development mode
+if (process.env.NODE_ENV === "development") {
+  middleware.push(logger)
+}
+
+const createStoreWithMiddleware = applyMiddleware(...middleware, LogRocket.reduxMiddleware())(createStore);
 const store = createStoreWithMiddleware(persistReducer);
 const persistor = persistStore(store)
 

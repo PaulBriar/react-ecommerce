@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import ErrorBoundary from 'react-error-boundary';
+import PropTypes from 'prop-types';
 
 import { selectCartItems, selectCartTotal } from '../../redux/selectors/cartSelector';
 import { CheckoutProps } from '../../utils/interfaces';
 
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';
+import StripCheckoutButton from '../../components/StripeCheckoutButton/StripCheckoutButton';
 
 import './CheckoutPage.styles.scss';
 
@@ -40,6 +42,7 @@ const CheckoutPage = ({ cartItems, total }: CheckoutProps) => {
       <div className="total">
         <span>Total: ${total}</span>
       </div>
+      <StripCheckoutButton price={total} />
     </div>
   )
 }
@@ -51,4 +54,9 @@ const mapStateToProps = createStructuredSelector({
   total: selectCartTotal
 });
 
-export default connect(mapStateToProps, null)(CheckoutPage);
+CheckoutPage.propTypes = {
+  cartItems: PropTypes.array.isRequired,
+  total: PropTypes.number.isRequired
+}
+
+export default connect(mapStateToProps)(CheckoutPage);
