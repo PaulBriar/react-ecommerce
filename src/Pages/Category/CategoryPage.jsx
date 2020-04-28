@@ -28,7 +28,7 @@ const mapStateToProps = (state, ownProps) => ({
 })
 
 CategoryPage.propTypes = {
-  category: PropTypes.array.isRequired
+  category: PropTypes.object.isRequired
 }
 
 export default connect(mapStateToProps)(CategoryPage);
