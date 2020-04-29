@@ -1,5 +1,7 @@
 import React from "react";
 import { render } from "@testing-library/react";
+import { BrowserRouter } from 'react-router-dom';
+import { ToastProvider } from "react-toast-notifications";
 
 import { Provider } from "react-redux";
 import { createStore } from "redux";
@@ -26,7 +28,11 @@ const items = [
 test("Render Preview Collection", () => {
   const { container } = render(
     <Provider store={store}>
-      <CategoryPreview title="hats" items={items} />
+      <ToastProvider placement="bottom-center" autoDismissTimeout={3000}>
+        <BrowserRouter>
+          <CategoryPreview title="hats" items={items} />
+        </BrowserRouter>
+      </ToastProvider>
     </Provider>
   );
   expect(container).toBeInTheDocument();
