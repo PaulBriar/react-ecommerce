@@ -20,7 +20,7 @@ const CartDropdown = ({ cartItems, history, toggleCartHidden }: CartDropdownProp
     toggleCartHidden();
   }
   return (
-    <div className="cart-dropdown">
+    <div className="cart-dropdown" title="Cart">
       <div className="cart-items">
         {cartItems.length ? (
           cartItems.map(cartItem => (

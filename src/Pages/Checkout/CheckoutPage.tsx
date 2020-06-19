@@ -4,7 +4,7 @@ import { createStructuredSelector } from 'reselect';
 import ErrorBoundary from 'react-error-boundary';
 import PropTypes from 'prop-types';
 
-import { selectCartItems, selectCartTotal } from '../../redux/selectors/cartSelector';
+import { selectCartItems, selectCartTotal } from  '../../redux/selectors/cartSelector';
 import { CheckoutProps } from '../../utils/interfaces';
 
 import CheckoutItem from '../../components/CheckoutItem/CheckoutItem';

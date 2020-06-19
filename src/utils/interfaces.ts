@@ -1,13 +1,21 @@
-import { SET_CURRENT_USER, TOGGLE_CART_HIDDEN, ADD_CART_ITEM, REMOVE_CART_ITEM, REDUCE_ITEM_QUANTITY, DEFAULT_CATEGORY_STATE, DEFAULT_SHOP_STATE } from '../redux/constants';
+import { SET_CURRENT_USER, TOGGLE_CART_HIDDEN, ADD_CART_ITEM, REMOVE_CART_ITEM, REDUCE_ITEM_QUANTITY, DEFAULT_CATEGORY_STATE, DEFAULT_SHOP_STATE, FETCH_SHOP_DATA_BEGIN, FETCH_SHOP_DATA_SUCCESS, FETCH_SHOP_DATA_FAILURE } from '../redux/constants';
 
+import { ReactNode } from 'react';
+
+export interface ButtonProps {
+  children?: ReactNode;
+  isGoogleSignIn?: boolean;
+  inverted?: boolean;
+  onClick?: any;
+}
 interface SetCurrentUserAction {
   type: typeof SET_CURRENT_USER,
   user: UserTypes
-};
+}
 
 interface ToggleCartHiddenAction {
   type: typeof TOGGLE_CART_HIDDEN
-};
+}
 
 interface AddCartItemAction {
   type: typeof ADD_CART_ITEM,
@@ -32,7 +40,21 @@ interface DefaultShopAction {
   type: typeof DEFAULT_SHOP_STATE
 }
 
-export type ShopActionTypes = DefaultShopAction;
+interface FetchShopDataBeginAction {
+  type: typeof FETCH_SHOP_DATA_BEGIN
+}
+
+interface FetchShopDataSuccessAction {
+  type: typeof FETCH_SHOP_DATA_SUCCESS
+  shopData: typeof Object
+}
+
+interface FetchShopDataFailureAction {
+  type: typeof FETCH_SHOP_DATA_FAILURE
+  error: typeof Object
+}
+
+export type ShopActionTypes = DefaultShopAction | FetchShopDataBeginAction | FetchShopDataSuccessAction | FetchShopDataFailureAction;
 
 export type CategoryActionTypes = DefaultCategoryAction;
 
@@ -133,7 +155,7 @@ export interface CategoryStateProps {
   ]
 }
 export interface CategoryPreviewProps {
-  title: string,
+  title: string
   items: {
     title: string,
     imageUrl: string,
@@ -190,19 +212,17 @@ export interface ShopProps {
 }
 
 export interface CategoryOverviewProps {
-  categories: [
-     {
+  category: {
+    id: number,
+    title: string,
+    routeName: string,
+    items: {
       id: number,
-      title: string,
-      routeName: string,
-      items: {
-        id: number,
-        name: string,
-        imageUrl: string,
-        price: number
-      }
-    }
-  ]
+      name: string,
+      imageUrl: string,
+      price: number
+    }[]
+  }
 }
 
 export interface CategoryPageProps {

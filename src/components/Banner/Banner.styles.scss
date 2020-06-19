@@ -1,0 +1,21 @@
+.banner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100vw;
+  height: 80%;
+
+  .banner-content {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 50px;
+    width: 100vw;
+    max-width: 1800px;
+    min-height: 300px;
+    height: 70vh;
+  }
+}

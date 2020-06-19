@@ -10,14 +10,15 @@ export default function CategoryPreview({title, items, routeName}) {
 
   return (
     <div className="category-preview">
-      <h1 className="title">{title.toUpperCase()} - <Link to={`/shop/${routeName}`}>See More</Link></h1>
+      <h1 className="title">{title.toUpperCase()}</h1>
       <div className="preview">
         {items
           .filter((item, i) => i < 4)
           .map(item => (
             <CategoryItem key={item.id} item={item} />
           ))}
-      </div>
+        </div>
+        <Link to={`/shop/${routeName}`} className="link">See More {title}</Link>
     </div>
   );
 }

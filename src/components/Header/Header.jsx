@@ -34,9 +34,11 @@ const Header = ({ currentUser, cartHidden }) => {
           <Link className="option" to="/signin">
             SIGN IN
           </Link>
-        )}
-        <Cart />
+          )}
       </div>
+      <span className="cart">
+          <Cart />
+        </span>
       {cartHidden ? null : (
         <ErrorBoundary>
           <CartDropdown />

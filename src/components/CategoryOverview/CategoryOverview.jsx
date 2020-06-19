@@ -12,10 +12,10 @@ const CategoryOverview = ({ categories }) => {
   return (
     <div className="category-overview">
       <ErrorBoundary>
-      {categories &&
+      {categories ?
         categories.map(({ id, ...otherCategoryProps }) => (
             <CategoryPreview key={id} {...otherCategoryProps} />
-        ))}
+        )) : <div>Loading...</div>}
       </ErrorBoundary>
     </div>
   )

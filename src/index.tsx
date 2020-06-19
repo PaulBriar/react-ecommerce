@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
+import thunk from 'redux-thunk';
 import logger from "redux-logger";
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -26,7 +27,7 @@ if (process.env.NODE_ENV === "development") {
   middleware.push(logger)
 }
 
-const createStoreWithMiddleware = applyMiddleware(...middleware, LogRocket.reduxMiddleware())(createStore);
+const createStoreWithMiddleware = applyMiddleware(...middleware,thunk, LogRocket.reduxMiddleware())(createStore);
 const store = createStoreWithMiddleware(persistReducer);
 const persistor = persistStore(store)
 
