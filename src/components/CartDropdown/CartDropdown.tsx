@@ -13,7 +13,7 @@ import CartItem from "../CartItem/CartItem";
 
 import "./CartDropdown.styles.scss";
 
-const CartDropdown = ({ cartItems, history, toggleCartHidden }: CartDropdownProps) => {
+const CartDropdown = ({ cartItems, history, hideCart }: CartDropdownProps) => {
 
   const handleCheckoutClick = () => {
     history.push('/checkout');
@@ -36,7 +36,7 @@ const CartDropdown = ({ cartItems, history, toggleCartHidden }: CartDropdownProp
 };
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
-  toggleCartHidden: () => dispatch(toggleCartHidden())
+  hideCart: () => dispatch(toggleCartHidden())
 });
 
 const mapStateToProps = createStructuredSelector({

@@ -13,19 +13,17 @@ import ShopPage from "./Pages/Shop/ShopPage";
 import SignInSignUp from "./Pages/SignInSignUp/SignInSignUp";
 import CheckoutPage from "./Pages/Checkout/CheckoutPage";
 
-import { selectCurrentUser } from "./redux/selectors/userSelector";
-import { UserTypes } from './utils/interfaces';
-
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+
+import { selectCurrentUser } from "./redux/selectors/userSelector";
+import { UserTypes, CurrentUserProps } from './utils/interfaces';
+
 
 import "./App.css";
 
-type currenUserProps = {
-  setCurrentUser: Function,
-  currentUser: Object
-}
 
-class App extends React.Component<currenUserProps> {
+class App extends React.Component<CurrentUserProps> {
   unSubscribeFromAuth: Function = null;
 
   componentDidMount() {
@@ -70,6 +68,7 @@ class App extends React.Component<currenUserProps> {
               />
             </Switch>
           </ErrorBoundary>
+          <Footer />
         </div>
       </ToastProvider>
     );

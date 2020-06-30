@@ -4,17 +4,25 @@ import { useToasts } from 'react-toast-notifications';
 
 import { addCartItem } from "../../redux/actions/cartActions";
 
+import { CategoryItemProps, CartItemTypes } from '../../utils/interfaces'
+
 import Button from "../Button/Button";
 
 import "./CategoryItem.styles.scss";
 
-const CategoryItem = ({ item, addItem }) => {
+type HandleClickProps = {
+    imageUrl: string,
+    name: string,
+    price: number
+}
+
+const CategoryItem = ({ item, addItem }: CategoryItemProps) => {
   const { imageUrl, name, price } = item;
   const { addToast } = useToasts()
 
-  const handleClick = (item) => {
+  const handleClick = (item: HandleClickProps) => {
     addItem(item);
-    addToast(`${item.name} Has Been Added To Your Cart`, { appearance: 'success', autoDismiss: true})
+    addToast(`${name} Has Been Added To Your Cart`, { appearance: 'success', autoDismiss: true})
   }
   return (
     <div className="category-item">
@@ -30,8 +38,8 @@ const CategoryItem = ({ item, addItem }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  addItem: cartItem => dispatch(addCartItem(cartItem))
+const mapDispatchToProps = (dispatch: Function) => ({
+  addItem: (cartItem: CartItemTypes) => dispatch(addCartItem(cartItem))
 });
 
 export default connect(null, mapDispatchToProps)(CategoryItem);

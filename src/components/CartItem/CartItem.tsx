@@ -1,8 +1,10 @@
 import React from "react";
 
+import { CartItemProps } from '../../utils/interfaces'
+
 import "./CartItem.styles.scss";
 
-const CartItem = ({ item: { imageUrl, price, name, quantity } }) => {
+const CartItem = ({ item: { imageUrl, price, name, quantity } }: CartItemProps) => {
   return (
     <div className="cart-item">
       <img src={imageUrl} alt="cart item" className="item" />

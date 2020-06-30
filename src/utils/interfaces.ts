@@ -66,6 +66,15 @@ export interface CartState {
   cartHidden: boolean,
   cartItems: CartItemTypes[]
 }
+
+export interface CartItemProps {
+  item: {
+    imageUrl: string,
+    price: number,
+    name: string,
+    quantity: number 
+  }
+}
 export interface CartDropdownProps {
   cartItems: {
     id: string,
@@ -77,11 +86,16 @@ export interface CartDropdownProps {
   history: {
     push: any
   };
-  toggleCartHidden(): any
+  hideCart(): any
 }
 
 export interface UserState {
   currentUser: null | object
+}
+
+export type CurrentUserProps = {
+  setCurrentUser: Function,
+  currentUser: Object
 }
 
 export interface CategoryState {
@@ -166,16 +180,12 @@ export interface CategoryPreviewProps {
 }
 
 export interface CategoryItemProps {
-  title: string;
-  imageUrl: string;
-  size?: string;
-  history: {
-    push(match: string): any
-  };
-  match: {
-    url: string
-  }
-  linkUrl: string;
+  item: {
+    imageUrl: string,
+    name: string,
+    price: number
+  },
+  addItem: Function
 }
 
 export interface CategoryPageItem {
@@ -237,4 +247,8 @@ export interface CategoryPageProps {
       price: number
     }[]
   }
+}
+
+export type WrappedComponentProps = {
+  isLoading: boolean,
 }

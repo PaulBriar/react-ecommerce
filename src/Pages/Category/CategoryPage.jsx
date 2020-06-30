@@ -15,7 +15,7 @@ const CategoryPage = ({ category: {title, items} }) => {
     <div className="category-page">
       <ErrorBoundary>
         <div className="header">
-          <Link to={"/shop/"} className="link">Back</Link>
+          <Link to={"/shop/"} className="link">Back to Shop</Link>
           <h2 className="title">{title}</h2>
         </div>
         <div className="items">
